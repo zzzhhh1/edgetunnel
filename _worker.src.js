@@ -80,6 +80,7 @@ let effectiveTime = 7;//有效时间 单位:天
 let updateTime = 3;//更新时间
 let userIDLow;
 let userIDTime = "";
+/*Obfuscate-cmliu*/
 if (!isValidUUID(userID)) {
 	throw new Error('uuid is not valid');
 }
@@ -1298,7 +1299,7 @@ function checkSUB(host) {
 	}
 }
 
-const 啥啥啥_写的这是啥啊 = 'dmxlc3M=';
+const 啥啥啥_写的这是啥啊 = `\u0064\u006d\u0078\u006c\u0063\u0033\u004d\u003d`;
 function 配置信息(UUID, 域名地址) {
 	const 协议类型 = atob(啥啥啥_写的这是啥啊);
 	
@@ -1323,7 +1324,7 @@ function 配置信息(UUID, 域名地址) {
 		传输层安全 = ['',false];
 	}
 
-	const v2ray = `${协议类型}://${用户ID}@${地址}:${端口}?encryption=${加密方式}&security=${传输层安全[0]}&sni=${SNI}&fp=${指纹}&type=${传输层协议}&host=${伪装域名}&path=${encodeURIComponent(路径)}#${encodeURIComponent(别名)}`;
+	const v2ray = `${协议类型}://${用户ID}@${地址}:${端口}\u003f\u0065\u006e\u0063\u0072\u0079\u0070\u0074\u0069\u006f\u006e\u003d${加密方式}&security=${传输层安全[0]}&sni=${SNI}&fp=${指纹}&type=${传输层协议}&host=${伪装域名}&path=${encodeURIComponent(路径)}#${encodeURIComponent(别名)}`;
 	const clash = `- type: ${协议类型}
   name: ${FileName}
   server: ${地址}
@@ -1824,7 +1825,7 @@ function subAddresses(host,UUID,noTLS,newAddressesapi,newAddressescsv,newAddress
 			let 节点备注 = '';
 			const 协议类型 = atob(啥啥啥_写的这是啥啊);
 			
-			const vlessLink = `${协议类型}://${UUID}@${address}:${port}?encryption=none&security=&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+			const vlessLink = `${协议类型}://${UUID}@${address}:${port}\u003f\u0065\u006e\u0063\u0072\u0079\u0070\u0074\u0069\u006f\u006e\u003dnone&security=&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 	
 			return vlessLink;
 
@@ -1889,7 +1890,7 @@ function subAddresses(host,UUID,noTLS,newAddressesapi,newAddressescsv,newAddress
 		}
 		
 		const 协议类型 = atob(啥啥啥_写的这是啥啊);
-		const vlessLink = `${协议类型}://${UUID}@${address}:${port}?encryption=none&security=tls&sni=${伪装域名}&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+		const vlessLink = `${协议类型}://${UUID}@${address}:${port}\u003f\u0065\u006e\u0063\u0072\u0079\u0070\u0074\u0069\u006f\u006e\u003dnone&security=tls&sni=${伪装域名}&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
 			
 		return vlessLink;
 	}).join('\n');
