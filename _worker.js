@@ -57,7 +57,7 @@ export default {
 			}
 			
 			if (!userID) {
-				return new Response('请设置你的UUID变量，或尝试重试部署，检查变量是否成效？', { 
+				return new Response('请设置你的UUID变量，或尝试重试部署，检查变量是否生效？', { 
 					status: 404,
 					headers: {
 						"Content-Type": "text/plain;charset=utf-8",
