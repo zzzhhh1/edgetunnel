@@ -1,9 +1,10 @@
 name: Obfuscate and Commit
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+    push:
+        paths:
+            - '明文源码.js'
+    workflow_dispatch:
 
 jobs:
   obfuscate:
