@@ -1221,7 +1221,7 @@ async function 生成配置信息(userID, hostName, sub, UA, RproxyIP, _url, env
 		if (match) {
 			sub = match[1];
 		}
-		const subs = 整理(sub);
+		const subs = await 整理(sub);
 		if (subs.length > 1) sub = subs[0];
 		
 	} else if ((addresses.length + addressesapi.length + addressesnotls.length + addressesnotlsapi.length + addressescsv.length) == 0){
