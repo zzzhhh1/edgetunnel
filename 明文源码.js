@@ -161,10 +161,10 @@ export default {
 				} else if (路径 == `/${fakeUserID}`) {
 					const fakeConfig = await 生成配置信息(userID, request.headers.get('Host'), sub, 'CF-Workers-SUB', RproxyIP, url, env);
 					return new Response(`${fakeConfig}`, { status: 200 });
-				} else if (路径 == `/${动态UUID}/add` || 路径 == `/${userID}/add`) {
+				} else if (url.pathname == `/${动态UUID}/edit` || 路径 == `/${userID}/edit`) {
 					const html = await KV(request, env);
 					return html;
-				} else if (路径 == `/${动态UUID}` || 路径 == `/${userID}`) {
+				} else if (url.pathname == `/${动态UUID}` || 路径 == `/${userID}`) {
 					await sendMessage(`#获取订阅 ${FileName}`, request.headers.get('CF-Connecting-IP'), `UA: ${UA}</tg-spoiler>\n域名: ${url.hostname}\n<tg-spoiler>入口: ${url.pathname + url.search}</tg-spoiler>`);
 					const 维列斯Config = await 生成配置信息(userID, request.headers.get('Host'), sub, UA, RproxyIP, url, env);
 					const now = Date.now();
@@ -183,6 +183,7 @@ export default {
 								"Content-Type": "text/html;charset=utf-8",
 								"Profile-Update-Interval": "6",
 								"Subscription-Userinfo": `upload=${pagesSum}; download=${workersSum}; total=${total}; expire=${expire}`,
+								"Cache-Control": "no-store",
 							}
 						});
 					} else {
@@ -1221,18 +1222,28 @@ async function 生成配置信息(userID, hostName, sub, UA, RproxyIP, _url, env
 		if (subs.length > 1) sub = subs[0];
 	} else {
 		if (env.KV){
-			const KV空间优选列表 = await env.KV.get('/ADD.txt');
-			if (KV空间优选列表) {
-				const KV空间优选列表数组 = await 整理(KV空间优选列表);
-				for (const item of KV空间优选列表数组) {
-					if (item.startsWith('https://')) {
-						addressesapi.push(item);
-					} else if (item.includes('://')) {
-						link.push(item); 
+			const 优选地址列表 = await env.KV.get('/ADD.txt');
+			if (优选地址列表) {
+				const 优选地址数组 = await 整理(优选地址列表);
+				const 分类地址 = {
+					接口地址: new Set(),
+					链接地址: new Set(),
+					优选地址: new Set()
+				};
+				
+				for (const 元素 of 优选地址数组) {
+					if (元素.startsWith('https://')) {
+						分类地址.接口地址.add(元素);
+					} else if (元素.includes('://')) {
+						分类地址.链接地址.add(元素);
 					} else {
-						addresses.push(item);
+						分类地址.优选地址.add(元素);
 					}
 				}
+				
+				addressesapi = [...分类地址.接口地址];
+				link = [...分类地址.链接地址];
+				addresses = [...分类地址.优选地址];
 			}
 		}
 		
@@ -1332,7 +1343,7 @@ async function 生成配置信息(userID, hostName, sub, UA, RproxyIP, _url, env
 			else if (proxyIP && proxyIP != '') 订阅器 += `CFCDN（访问方式）: ProxyIP<br>&nbsp;&nbsp;${proxyIPs.join('<br>&nbsp;&nbsp;')}<br>`;
 			else 订阅器 += `CFCDN（访问方式）: 无法访问, 需要您设置 proxyIP/PROXYIP ！！！<br>`;
 			let 判断是否绑定KV空间 = '';
-			if (env.KV) 判断是否绑定KV空间 = ` <a href='${_url.pathname}/add'>编辑优选列表</a>`;
+			if (env.KV) 判断是否绑定KV空间 = ` <a href='${_url.pathname}/edit'>编辑优选列表</a>`;
 			订阅器 += `<br>您的订阅内容由 内置 addresses/ADD* 参数变量提供${判断是否绑定KV空间}<br>`;
 			if (addresses.length > 0) 订阅器 += `ADD（TLS优选域名&IP）: <br>&nbsp;&nbsp;${addresses.join('<br>&nbsp;&nbsp;')}<br>`;
 			if (addressesnotls.length > 0) 订阅器 += `ADDNOTLS（noTLS优选域名&IP）: <br>&nbsp;&nbsp;${addressesnotls.join('<br>&nbsp;&nbsp;')}<br>`;
@@ -1857,14 +1868,14 @@ function 生成动态UUID(密钥) {
 	return Promise.all([当前UUIDPromise, 上一个UUIDPromise, 到期时间字符串]);
 }
 
-async function KV(request, env) {
+async function KV(request, env, txt = '/ADD.txt') {
 	try {
 		// POST请求处理
 		if (request.method === "POST") {
 			if (!env.KV) return new Response("未绑定KV空间", { status: 400 });
 			try {
 				const content = await request.text();
-				await env.KV.put('/ADD.txt', content);
+				await env.KV.put(txt, content);
 				return new Response("保存成功");
 			} catch (error) {
 				console.error('保存KV时发生错误:', error);
@@ -1878,7 +1889,7 @@ async function KV(request, env) {
 		
 		if (hasKV) {
 			try {
-				content = await env.KV.get('/ADD.txt') || '';
+				content = await env.KV.get(txt) || '';
 			} catch (error) {
 				console.error('读取KV时发生错误:', error);
 				content = '读取数据时发生错误: ' + error.message;
