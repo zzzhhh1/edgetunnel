@@ -164,6 +164,9 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
 
 # 注意事项
 
+### 开启在线编辑优选列表
+- 绑定名为`KV`的KV空间，即可在无`SUB`的前提下，在配置页实现在线编辑`ADD`与`ADDAPI`优选列表；
+
 ### **关于`KEY`与`UUID`：**
 - 填入`KEY`变量后，将停用`UUID`变量，请确保**二者选其一使用**！
 1. 填写`KEY`后，您的**永久订阅**地址为：`https://[YOUR-URL]/[YOUR-KEY]`；
