@@ -334,8 +334,7 @@ async function 维列斯OverWSHandler(request) {
 				log(`处理 TCP 出站连接 ${addressRemote}:${portRemote}`);
 				handleTCPOutBound(remoteSocketWapper, addressType, addressRemote, portRemote, rawClientData, webSocket, 维列斯ResponseHeader, log);
 			} else {
-				log(`黑名单关闭 TCP 出站连接 ${addressRemote}:${portRemote}`);
-				tcpSocket.close();
+				throw new Error(`黑名单关闭 TCP 出站连接 ${addressRemote}:${portRemote}`);
 			}
 		},
 		close() {
