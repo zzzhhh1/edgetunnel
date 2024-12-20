@@ -1,10 +1,8 @@
 # edgetunnel
 这是一个基于 CF Worker 平台的脚本，在原版的基础上修改了显示 VLESS 配置信息转换为订阅内容。使用该脚本，你可以方便地将 VLESS 配置信息使用在线配置转换到 Clash 或 Singbox 等工具中。
 
-- 基础部署视频教程：https://www.youtube.com/watch?v=LeT4jQUh8ok
-- 快速部署视频教程：https://www.youtube.com/watch?v=59THrmJhmAw ***最佳推荐!!!***
-- 进阶使用视频教程：https://www.youtube.com/watch?v=s91zjpw3-P8
-- **从入门到精通**教程：https://www.youtube.com/watch?v=oRYnrp5rQSc ***必看内容!必看内容!必看内容!!!***
+- **edgetunnel 最新教程**：https://www.youtube.com/watch?v=tKe9xUuFODA ***必看内容!必看内容!必看内容!!!***
+- **报错 Error 1101 详解**：https://www.youtube.com/watch?v=r4uVTEJptdE
 
 Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networks](https://url.cmliussss.com/alice)提供的云服务器维持[CM订阅转换服务](https://sub.fxxk.dedyn.io/)！**
 
@@ -34,7 +32,7 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
 - 另外，您也可以选择自行部署 [WorkerVless2sub 订阅生成服务](https://github.com/cmliu/WorkerVless2sub)，这样既可以利用订阅生成器的便利。
    
 # 如何使用?
-## Workers 部署方法 [视频教程](https://www.youtube.com/watch?v=LeT4jQUh8ok&t=83s)
+## Workers 部署方法 [视频教程](https://www.youtube.com/watch?v=tKe9xUuFODA&t=191s)
 
 <details>
 <summary><code><strong>「 Workers 部署文字教程 」</strong></code></summary>
@@ -63,7 +61,7 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
 
 </details>
 
-## Pages 上传 部署方法 **最佳推荐!!!** [视频教程](https://www.youtube.com/watch?v=59THrmJhmAw)
+## Pages 上传 部署方法 **最佳推荐!!!** [视频教程](https://www.youtube.com/watch?v=tKe9xUuFODA&t=436s)
 
 <details>
 <summary><code><strong>「 Pages 上传文件部署文字教程 」</strong></code></summary>
@@ -98,7 +96,7 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
 
 </details>
 
-## Pages GitHub 部署方法 [视频教程](https://www.youtube.com/watch?v=LeT4jQUh8ok&t=560s)
+## Pages GitHub 部署方法 [视频教程](https://www.youtube.com/watch?v=tKe9xUuFODA&t=317s)
 
 <details>
 <summary><code><strong>「 Pages GitHub 部署文字教程 」</strong></code></summary>
@@ -164,8 +162,8 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
 
 # 注意事项
 
-### 开启在线编辑优选列表
-- 绑定名为`KV`的KV空间，即可在无`SUB`的前提下，在配置页实现在线编辑`ADD`与`ADDAPI`优选列表；
+### 开启在线编辑优选列表 [视频教程](https://www.youtube.com/watch?v=tKe9xUuFODA&t=630s)
+- 绑定**变量名称**为`KV`的**KV命名空间**，即可在无`SUB`的前提下，在配置页实现在线编辑`ADD`与`ADDAPI`优选列表；
 
 ### **关于`KEY`与`UUID`：**
 - 填入`KEY`变量后，将停用`UUID`变量，请确保**二者选其一使用**！
@@ -190,14 +188,14 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
 本项目提供灵活的订阅配置方案，支持通过URL参数快速自定义订阅内容。
 - 示例订阅地址： `https://edgetunnel.pages.dev/90cd4a77-141a-43c9-991b-08263cfe9c10` 
 
-1. 更换**订阅生成器**的订阅地址
+1. 更换**订阅生成器**的订阅地址 [视频教程](https://www.youtube.com/watch?v=tKe9xUuFODA&t=1019s)
 
    快速切换订阅生成器至 `VLESS.fxxk.dedyn.io`：
    ```url
    https://edgetunnel.pages.dev/90cd4a77-141a-43c9-991b-08263cfe9c10?sub=VLESS.fxxk.dedyn.io
    ```
 
-2. 更换**PROXYIP**的订阅地址
+2. 更换**PROXYIP**的订阅地址 [视频教程](https://www.youtube.com/watch?v=tKe9xUuFODA&t=1094s)
 
    快速更换PROXYIP为 `proxyip.fxxk.dedyn.io`：
    ```url
@@ -258,4 +256,4 @@ Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)，**感谢[Alice Networ
    - clash.meta（[FlClash](https://github.com/chen08209/FlClash)，[mihomo-party](https://github.com/mihomo-party-org/mihomo-party)）
 
 # 感谢
-[zizifn](https://github.com/zizifn/edgetunnel)、[3Kmfi6HP](https://github.com/6Kmfi6HP/EDtunnel)、[Stanley-baby](https://github.com/Stanley-baby)、[ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/config)、[SHIJS1999](https://github.com/SHIJS1999/cloudflare-worker-vless-ip)、<a href="https://url.cmliussss.com/alice"><img src="https://alicenetworks.net/templates/lagom2/assets/img/logo/logo_big.194980063.png" width="150" height="75" alt="Alice Networks LTD"/></a>、
+[zizifn](https://github.com/zizifn/edgetunnel)、[3Kmfi6HP](https://github.com/6Kmfi6HP/EDtunnel)、[Stanley-baby](https://github.com/Stanley-baby)、[ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/config)、[SHIJS1999](https://github.com/SHIJS1999/cloudflare-worker-vless-ip)、[Alice Networks LTD](https://url.cmliussss.com/alice)、
