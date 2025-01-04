@@ -3,7 +3,7 @@ import { connect } from 'cloudflare:sockets';
 
 let userID = '';
 let proxyIP = '';
-let sub = '';
+//let sub = '';
 let subConverter = 'SUBAPI.fxxk.dedyn.io';
 let subConfig = "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiMode.ini";
 let subProtocol = 'https';
@@ -126,7 +126,7 @@ export default {
 				subEmoji = env.SUBEMOJI || env.EMOJI || subEmoji;
 				if (subEmoji == '0') subEmoji = 'false';
 				if (env.LINK) link = await 整理(env.LINK);
-				sub = env.SUB || sub;
+				let sub = env.SUB || '';
 				subConverter = env.SUBAPI || subConverter;
 				if (subConverter.includes("http://")) {
 					subConverter = subConverter.split("//")[1];
