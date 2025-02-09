@@ -395,7 +395,7 @@ async function handleTCPOutBound(remoteSocket, addressType, addressRemote, portR
 		} else {
 			// 否则，尝试使用预设的代理 IP（如果有）或原始地址重试连接
 			if (!proxyIP || proxyIP == '') {
-				proxyIP = atob(`UFJPWFlJUC50cDEuZnh4ay5kZWR5bi5pbw==`);
+				proxyIP = atob('UFJPWFlJUC50cDEuMDkwMjI3Lnh5eg==');
 			} else if (proxyIP.includes(']:')) {
 				portRemote = proxyIP.split(']:')[1] || portRemote;
 				proxyIP = proxyIP.split(']:')[0] || proxyIP;
