@@ -213,11 +213,12 @@ export default {
 				else if (new RegExp('/socks://', 'i').test(url.pathname) || new RegExp('/socks5://', 'i').test(url.pathname)) {
 					socks5Address = url.pathname.split('://')[1].split('#')[0];
 					if (socks5Address.includes('@')) {
-						let userPassword = socks5Address.split('@')[0];
+						let userPassword = socks5Address.split('@')[0].replaceAll('%3D', '=');
 						const base64Regex = /^(?:[A-Z0-9+/]{4})*(?:[A-Z0-9+/]{2}==|[A-Z0-9+/]{3}=)?$/i;
 						if (base64Regex.test(userPassword) && !userPassword.includes(':')) userPassword = atob(userPassword);
 						socks5Address = `${userPassword}@${socks5Address.split('@')[1]}`;
 					}
+                    go2Socks5s = ['all in'];
 				}
 
 				if (socks5Address) {
