@@ -218,7 +218,7 @@ export default {
 						if (base64Regex.test(userPassword) && !userPassword.includes(':')) userPassword = atob(userPassword);
 						socks5Address = `${userPassword}@${socks5Address.split('@')[1]}`;
 					}
-                    go2Socks5s = ['all in'];
+					go2Socks5s = ['all in'];
 				}
 
 				if (socks5Address) {
