@@ -3343,7 +3343,7 @@ async function bestIP(request, env, txt = 'ADD.txt') {
                 current.latency < best.latency ? current : best
             );
             
-            const displayLatency = Math.floor(bestResult.latency);
+            const displayLatency = Math.floor(bestResult.latency / 2); 
             
             console.log(\`IP \${parsedIP.host}:\${parsedIP.port} 最终结果: \${displayLatency}ms (原始: \${bestResult.latency}ms, 共\${results.length}次有效测试)\`);
             
