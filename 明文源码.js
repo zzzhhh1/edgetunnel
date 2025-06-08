@@ -3574,7 +3574,7 @@ async function bestIP(request, env, txt = 'ADD.txt') {
         // 新增：加载IP列表的函数
         async function loadIPs(ipSource) {
             try {
-                const response = await fetch(\`/?loadIPs=\${ipSource}\`, {
+                const response = await fetch(\`?loadIPs=\${ipSource}\`, {
                     method: 'GET'
                 });
                 
