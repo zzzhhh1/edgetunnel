@@ -1,4 +1,4 @@
-name: 混淆当前版本源码
+name: 混淆最新版本源码
 on:
     workflow_dispatch:
 
@@ -28,9 +28,13 @@ jobs:
             cp _worker.js _worker.js.backup
           fi
 
+      - name: 加载源码
+        run: |
+          curl -o 明文源码.js https://raw.githubusercontent.com/cmliu/edgetunnel/main/_worker.js
+
       - name: 混淆代码
         run: |
-          javascript-obfuscator _worker.js.backup --output _worker.js \
+          javascript-obfuscator 明文源码.js --output _worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
