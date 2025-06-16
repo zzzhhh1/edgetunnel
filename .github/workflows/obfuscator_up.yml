@@ -52,14 +52,12 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add _worker.js
-          if git diff --cached --quiet _worker.js.backup; then
-            echo "_worker.js.backup 文件没有更改，跳过提交"
+          git add _worker.js _worker.js.backup
+          if git diff --cached --quiet; then
+            echo "没有文件更改，跳过提交"
           else
-            echo "_worker.js.backup 文件有更改，添加到提交"
-            git add _worker.js.backup
+            git commit -m "混淆 _worker.js 文件并备份原文件"
           fi
-          git commit -m "混淆 _worker.js 文件并备份原文件" || echo "没有需要提交的更改"
 
       - name: 推送更改
         uses: ad-m/github-push-action@master
